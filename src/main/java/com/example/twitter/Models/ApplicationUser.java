@@ -13,7 +13,6 @@ import java.util.Set;
 
 @Entity
 @Table(name="users")
-@NoArgsConstructor
 @Data
 @ToString
 public class ApplicationUser {
@@ -42,6 +41,15 @@ public class ApplicationUser {
             inverseJoinColumns = {@JoinColumn (name= "role_id")}
     )
     private Set<Role> authorities;
+
+    private Boolean enabled;
+    @Column(nullable = true)
+    @JsonIgnore
+    private Long verification;
+
+    public ApplicationUser(){
+        this.enabled=false;
+    }
 
 
 

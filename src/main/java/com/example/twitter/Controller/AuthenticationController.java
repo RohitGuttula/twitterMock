@@ -4,6 +4,8 @@ import com.example.twitter.Models.ApplicationUser;
 import com.example.twitter.Models.RegistrationObject;
 import com.example.twitter.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
@@ -30,5 +32,10 @@ public class AuthenticationController {
         user.setPhone(phone);
         return userService.updateUser(user);
 
+    }
+    @PostMapping("/email/code")
+    public ResponseEntity<String> createEmailVerification(@RequestBody LinkedHashMap<String,String> body){
+        userService.createEmailVerification(body.get("userName"));
+        return new ResponseEntity<String>("Verification Code generated, email sent", HttpStatus.OK);
     }
 }

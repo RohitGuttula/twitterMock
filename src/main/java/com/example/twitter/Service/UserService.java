@@ -75,4 +75,15 @@ public class UserService {
                     (HttpStatusCodes.BAD_REQUEST,"Email Already Exits for User");
         }
     }
+
+    public void createEmailVerification(String userName) {
+        ApplicationUser user=userRepository.findByUserName(userName)
+                .orElseThrow(()->new UserDoesNotExistException
+                        (HttpStatusCodes.NOT_FOUND,"UserName is not found"));
+        user.setVerification(generateVerificationNumber());
+        userRepository.save(user);
+    }
+    private Long generateVerificationNumber(){
+        return (long) Math.floor(Math.random()+100_000_000);
+    }
 }
