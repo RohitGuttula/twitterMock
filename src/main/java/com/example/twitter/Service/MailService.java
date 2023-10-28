@@ -1,18 +1,14 @@
 package com.example.twitter.Service;
 
-import com.google.api.client.googleapis.json.GoogleJsonError;
 import com.google.api.services.gmail.Gmail;
-import com.sun.mail.iap.ByteArray;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Properties;
